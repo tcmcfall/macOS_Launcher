@@ -19,7 +19,7 @@ Its goals are:
 
 ## 2. Supported Platforms
 
-- **macOS only**
+- **recent macOS only**
 - Tested against Kodi Omega (21.3) on macOS Tahoe (26.2) using Python 3
 - Requires standard macOS utilities:
 
