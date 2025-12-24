@@ -6,24 +6,21 @@
 
 ## 1. Overview
 
-**macOS Launcher** is a Kodi *Programs* add-on designed to integrate native macOS applications into the Kodi interface while respecting Kodi’s navigation model, artwork system, and favorites mechanism.
+**macOS Launcher** is a Kodi *Programs* add-on designed to integrate native macOS applications into the Kodi interface in a clean and transparent manner.
 
 Its goals are:
 
-- Allow browsing and launching of macOS `.app` bundles directly from Kodi
+- Allow browsing and launching of macOS applications directly from Kodi
+- Creation of Kodi Favorites, for inclusion within Kodi menus
 - Seamlessly return Kodi to its prior state after an app exits
 - Provide rich, configurable artwork without altering original app icons
-- Harden Kodi Favorites so accidental deletion outside the add-on does not break functionality
-- Centralize all app launch configuration in one place
-
-The add-on treats **Kodi as the primary UI**, not as something to be exited or replaced.
 
 ---
 
 ## 2. Supported Platforms
 
 - **macOS only**
-- Tested against modern Kodi releases using Python 3
+- Tested against Kodi Omega (21.3) on macOS Tahoe (26.2) using Python 3
 - Requires standard macOS utilities:
 
   - `open`
@@ -49,7 +46,7 @@ No third-party binaries are required.
 2. In Kodi:
 
    - **Settings → Add-ons**
-   - **Install from zip file**
+   - **Install from zip file** (must be previously enabled)
    - Select the ZIP
 
 The add-on will appear under:
@@ -57,26 +54,6 @@ The add-on will appear under:
 ```
 Add-ons → Program add-ons → macOS Launcher
 ```
-
----
-
-### 3.2 Artwork Caching Note (Important)
-
-Kodi caches add-on icons and thumbnails aggressively.
-
-If the add-on icon or app icons appear incorrect after installation:
-
-1. Quit Kodi
-2. Delete:
-
-   ```
-   ~/Library/Application Support/Kodi/userdata/Thumbnails/
-   ~/Library/Application Support/Kodi/userdata/Database/Textures*.db
-   ```
-
-3. Relaunch Kodi
-
-This forces Kodi to reload all artwork.
 
 ---
 
@@ -88,8 +65,6 @@ When opened, **macOS Launcher** presents two root-level entries:
 macOS Applications
 Saved Favorites
 ```
-
-These are always present.
 
 ---
 
@@ -103,7 +78,7 @@ This directory lists all discoverable macOS applications found in standard locat
 - `/System/Applications`
 - `~/Applications`
 
-Each entry represents a real `.app` bundle on disk.
+Image cache is built on first open of this directory and may take several seconds
 
 ---
 
@@ -114,17 +89,13 @@ For each application:
 - **Icon / Thumb**
 
   - Uses the app’s **original icon**
-  - No blur
-  - No background fill
-  - No compositing
-  - No poster logic applied
 
 - **Poster**
 
   - Generated automatically
   - Background color = **dominant color extracted from the icon**
   - Foreground = **large, upscaled icon**
-  - Soft drop shadow applied to the icon
+  - Soft drop shadow applied to the icon for clarity and definition
   - Poster generation never modifies the icon itself
 
 - **Fanart**
@@ -184,8 +155,6 @@ Creates a persistent launcher entry with the following behavior:
 - Artwork is initialized using the app’s icon and generated poster
 - The minimize/return preference is stored per favorite
 
-You do **not** need to manually add anything to Kodi favorites.
-
 ---
 
 ## 6. Saved Favorites
@@ -200,13 +169,13 @@ Even though Kodi Favorites are used for menu integration, the add-on **does not 
 
 ### 6.2 Hardened Favorites (Critical Feature)
 
-If you:
+This means that if you:
 
 - Delete a favorite directly from Kodi
 - Rename it via skin tools
 - Or otherwise modify it outside the add-on
 
-**macOS Launcher will not break.**
+**macOS Launcher will recreate it.**
 
 When **Saved Favorites** is opened:
 
@@ -215,6 +184,8 @@ When **Saved Favorites** is opened:
 - User configuration and artwork are preserved
 
 This prevents accidental corruption.
+
+**If a favorite was created with macOS Launcher, it must be edited/deleted there as well.**
 
 ---
 
@@ -255,8 +226,6 @@ Each saved favorite provides a rich context menu:
 
   - Removes the Saved Favorite
   - Removes the associated Kodi favorite
-
-All actions are safe and reversible.
 
 ---
 
@@ -315,24 +284,3 @@ If an icon cannot be extracted by the OS itself, the add-on will fall back grace
 
 ---
 
-## 10. What the Add-on Does *Not* Do
-
-- Does **not** modify system files
-- Does **not** replace Kodi’s shell behavior
-- Does **not** alter app icons themselves
-- Does **not** rely on backward compatibility with broken prior versions
-- Does **not** require Steam, Big Picture Mode, or game-specific logic
-
----
-
-## 11. Intended Use Case Summary
-
-**macOS Launcher** is ideal for users who want:
-
-- Kodi as a living-room UI
-- Seamless launching of desktop apps
-- Clean return behavior
-- Consistent artwork
-- Protection against accidental menu breakage
-
-It treats macOS applications as **first-class Kodi citizens**, without fighting Kodi’s design.
