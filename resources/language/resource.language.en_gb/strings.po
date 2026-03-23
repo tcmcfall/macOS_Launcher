@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Language: en_GB\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgctxt "#30001"
+msgid "Clear artwork cache"
+msgstr "Clear artwork cache"
+
+msgctxt "#30002"
+msgid "Saved Favorites"
+msgstr "Saved Favorites"
+
+msgctxt "#30003"
+msgid "macOS Applications"
+msgstr "macOS Applications"
+
+msgctxt "#30004"
+msgid "Add to Saved Favorites"
+msgstr "Add to Saved Favorites"
+
+msgctxt "#30005"
+msgid "Remove from Saved Favorites"
+msgstr "Remove from Saved Favorites"
+
+msgctxt "#30006"
+msgid "Add to Kodi Favorites"
+msgstr "Add to Kodi Favorites"
+
+msgctxt "#30007"
+msgid "Refresh artwork (generate now)"
+msgstr "Refresh artwork (generate now)"

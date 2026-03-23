@@ -1,0 +1,6 @@
+macOS Launcher 1.9.0
+- Restored Kodi 1.8.0-style addon.xml: pluginsource provides 'executable' to ensure the add-on opens normally.
+- Fixed root cause of macOS Applications view timeouts: directory listing no longer generates artwork per-app.
+  Only cached artwork is used in the apps list; explicit generation happens via context menu or in Saved Favorites.
+- Maintains modular codebase (router/ui/apps/artwork/favorites) with robust cache + favorites sync.
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings version="1">
+  <section id="general" label="General">
+    <category id="apps" label="Applications">
+      <setting id="include_applications" type="boolean" label="/Applications" default="true"/>
+      <setting id="include_system_applications" type="boolean" label="/System/Applications" default="true"/>
+      <setting id="include_user_applications" type="boolean" label="~/Applications" default="true"/>
+      <setting id="show_hidden_apps" type="boolean" label="Show hidden apps" default="false"/>
+    </category>
+
+    <category id="artwork" label="Artwork">
+      <setting id="prefer_icns" type="boolean" label="Prefer .icns extraction" default="true"/>
+      <setting id="fallback_quicklook" type="boolean" label="Fallback to Quick Look thumbnails" default="true"/>
+      <setting id="art_cache_max_age_days" type="number" label="Cache max age (days, 0 = never)" default="30" min="0" step="1"/>
+      <setting id="clear_art_cache" type="action" label="30001" action="RunPlugin(plugin://plugin.program.macoslauncher/?a=clear_cache)"/>
+    </category>
+  </section>
+</settings>
